@@ -1,0 +1,50 @@
+<div class="p-grid full p-jc-center p-ai-center" id="container">
+    <div class="p-col p-d-none p-d-lg-flex p-jc-center p-ai-center" id="login-image">
+      <img src="https://fakeimg.pl/440x320/?text=Login">
+    </div>
+    <div class="p-col-fixed p-grid p-flex-column p-p-3 p-shadow-8" id="login-container">
+        <div class="p-col p-d-flex p-jc-center p-ai-center" id="logo-image">
+          <img src="https://fakeimg.pl/250x90/?text=Login">
+        </div>
+        <div class="p-col p-d-flex p-flex-column">
+            <div class="p-mb-2">
+                <h4>LOGIN</h4>
+            </div>
+            <div class="p-mb-1">
+                <form class="p-fluid" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="p-field">
+                        <span class="p-float-label p-input-icon-left">
+                            <i class="pi pi-user"></i>
+                            <input type="email" formControlName="email" pInputText>
+                            <label>Email</label>
+                        </span>
+                        <small class="p-error" *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.dirty">{{globalService.controlFormInvalidMessage(loginForm?.get('email'), 'email')}}</small>
+                    </div>
+                    <div class="p-field">
+                        <span class="p-float-label p-input-icon-left p-input-icon-right">
+                            <i class="pi pi-lock"></i>
+                            <input type="password" formControlName="password" [showPassword]="showPassword" pPassword [feedback]="false">
+                            <label>Senha</label>
+                            <i class="pi cursor-pointer" [ngClass]="{'pi-eye': showPassword, 'pi-eye-slash': !showPassword}" (click)="showPassword = !showPassword"></i>
+                        </span>
+                        <small class="p-error" *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.dirty">{{globalService.controlFormInvalidMessage(loginForm?.get('password'), 'senha')}}</small>
+                    </div>
+                    <div class="p-fluid p-mb-1">
+                      <button pButton pRipple type="submit" label="Entrar"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="p-d-flex p-jc-center">
+                <button pButton pRipple type="button" label="Esqueci minha senha" class="p-button-text p-button-primary" (click)="showModalForRecoverPassword()"></button>
+            </div>
+        </div>
+        <div class="p-col p-d-flex p-ai-center p-jc-center social-media">
+          <a href="https://facebook.com">
+            <i class="pi pi-facebook"></i>
+          </a>
+          <a href="https://discord.com">
+            <i class="pi pi-discord"></i>
+          </a>
+        </div>
+    </div>
+</div>

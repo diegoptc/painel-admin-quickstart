@@ -1,0 +1,32 @@
+<div class="p-grid" style="height: 100vh;">
+  <div class="p-col-fixed p-shadow-8" style="width: 250px;" [ngClass]="{'p-d-none': hideMenu}">
+    <div class="p-d-flex p-jc-center">
+      <img width="150" src="https://fakeimg.pl/180x80/">
+    </div>
+    <div class="p-d-flex p-flex-column" *ngFor="let category of menu">
+      <p-divider></p-divider>
+      <div class="menu-category p-mb-3" *ngIf="category.label">
+        <b>{{category.label}}</b>
+      </div>
+      <div class="p-d-flex p-flex-column menu-items">
+        <a *ngFor="let item of category.items" pRipple [routerLink]="item.routerLink" routerLinkActive="active">
+          {{  item.label }}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="p-col p-d-flex p-flex-column">
+    <div class="p-d-flex p-jc-between p-shadow-1 p-p-2" style="height: 50px;">
+      <div>
+        <button type="button" pButton pRipple icon="pi pi-bars" label="Menu" class="p-button-text" (click)="hideMenu = !hideMenu"></button>
+      </div>
+      <div>
+        <button type="button" pButton iconPos="right" icon="pi pi-user" label="Diego" (click)="menuUserRef.toggle($event)"></button>
+        <p-menu #menuUserRef [popup]="true" [model]="menuUser"></p-menu>
+      </div>
+    </div>
+    <div class="p-p-3" style="height: calc(100vh - 50px); overflow-y: auto;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

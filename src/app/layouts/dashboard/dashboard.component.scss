@@ -1,0 +1,19 @@
+@import '/src/_variables';
+
+.menu-category {
+  color: #6c757d;
+}
+
+.menu-items {
+  a {
+    border-radius: 3px;
+    padding: .5rem;
+    cursor: pointer;
+  }
+  a:hover {
+    background-color: var(--surface-c);
+  }
+  a.active {
+    font-weight: 700;
+  }
+}
